@@ -1,0 +1,160 @@
+GET /val/match/v1/matches/{matchId}Get match by id
+Jump to Inputs
+Response Classes
+Return value: MatchDto
+MatchDto
+Name	Data Type	Description
+matchInfo	MatchInfoDto	
+players	List[PlayerDto]	
+coaches	List[CoachDto]	
+teams	List[TeamDto]	
+roundResults	List[RoundResultDto]	
+MatchInfoDto
+Name	Data Type	Description
+matchId	string	
+mapId	string	
+gameVersion	string	
+gameLengthMillis	int	
+region	string	
+gameStartMillis	long	
+provisioningFlowId	string	
+isCompleted	boolean	
+customGameName	string	
+queueId	string	
+gameMode	string	
+isRanked	boolean	
+seasonId	string	
+premierMatchInfo	List[PremierMatchDto]	
+PlayerDto
+Name	Data Type	Description
+puuid	string	
+gameName	string	
+tagLine	string	
+teamId	string	
+partyId	string	
+characterId	string	
+stats	PlayerStatsDto	
+competitiveTier	int	
+isObserver	boolean	
+playerCard	string	
+playerTitle	string	
+accountLevel	int	
+PlayerStatsDto
+Name	Data Type	Description
+score	int	
+roundsPlayed	int	
+kills	int	
+deaths	int	
+assists	int	
+playtimeMillis	int	
+abilityCasts	AbilityCastsDto	
+AbilityCastsDto
+Name	Data Type	Description
+grenadeCasts	int	
+ability1Casts	int	
+ability2Casts	int	
+ultimateCasts	int	
+CoachDto
+Name	Data Type	Description
+puuid	string	
+teamId	string	
+TeamDto
+Name	Data Type	Description
+teamId	string	This is an arbitrary string. Red and Blue in bomb modes. The puuid of the player in deathmatch.
+won	boolean	
+roundsPlayed	int	
+roundsWon	int	
+numPoints	int	Team points scored. Number of kills in deathmatch.
+RoundResultDto
+Name	Data Type	Description
+roundNum	int	
+roundResult	string	
+roundCeremony	string	
+winningTeam	string	
+winningTeamRole	string	
+bombPlanter	string	PUUID of player
+bombDefuser	string	PUUID of player
+plantRoundTime	int	
+plantPlayerLocations	List[PlayerLocationsDto]	
+plantLocation	LocationDto	
+plantSite	string	
+defuseRoundTime	int	
+defusePlayerLocations	List[PlayerLocationsDto]	
+defuseLocation	LocationDto	
+playerStats	List[PlayerRoundStatsDto]	
+roundResultCode	string	
+PlayerLocationsDto
+Name	Data Type	Description
+puuid	string	
+viewRadians	float	
+location	LocationDto	
+LocationDto
+Name	Data Type	Description
+x	int	
+y	int	
+PlayerRoundStatsDto
+Name	Data Type	Description
+puuid	string	
+kills	List[KillDto]	
+damage	List[DamageDto]	
+score	int	
+economy	EconomyDto	
+ability	AbilityDto	
+KillDto
+Name	Data Type	Description
+timeSinceGameStartMillis	int	
+timeSinceRoundStartMillis	int	
+killer	string	PUUID
+victim	string	PUUID
+victimLocation	LocationDto	
+assistants	List[string]	List of PUUIDs
+playerLocations	List[PlayerLocationsDto]	
+finishingDamage	FinishingDamageDto	
+FinishingDamageDto
+Name	Data Type	Description
+damageType	string	
+damageItem	string	
+isSecondaryFireMode	boolean	
+DamageDto
+Name	Data Type	Description
+receiver	string	PUUID
+damage	int	
+legshots	int	
+bodyshots	int	
+headshots	int	
+EconomyDto
+Name	Data Type	Description
+loadoutValue	int	
+weapon	string	
+armor	string	
+remaining	int	
+spent	int	
+AbilityDto
+Name	Data Type	Description
+grenadeEffects	string	
+ability1Effects	string	
+ability2Effects	string	
+ultimateEffects	string	
+Response Errors
+HTTP Status Code	Reason
+400	Bad request
+401	Unauthorized
+403	Forbidden
+404	Data not found
+405	Method not allowed
+415	Unsupported media type
+429	Rate limit exceeded
+500	Internal server error
+502	Bad gateway
+503	Service unavailable
+504	Gateway timeout
+Path Parameters
+Name	Value	Data Type	Description
+matchId
+required
+String	
+Select Region to Execute Against
+
+AP
+Include API key (?)
+Query Param Header Param Not required
